@@ -1,0 +1,19 @@
+{
+  "name": "test",
+  "version": "0.0.0",
+  "description": "boilerplate mocha testing suite for problem sets",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "tdd": "mocha -w"
+  },
+  "author": "andrew jarrett",
+  "license": "ISC",
+  "dependencies": {
+    "babel": "^5.8.21",
+    "lodash": "^4.16.6",
+    "mocha": "^3.1.2",
+    "ramda": "^0.22.1",
+    "should": "^11.1.1"
+  }
+}
