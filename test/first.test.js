@@ -95,6 +95,32 @@ describe("working with objects", () => {
     filterExcludedTags(demoModel).length.should.eql(2) 
   })
 
+  let makeEmailHref = R.pipe(
+    R.map(R.prop('email')),
+    R.join(';'),
+    R.concat('mailto:')
+  )
+
+  it('sends an email to everybody', () => {
+    let expectedResult = 'mailto:marcie.rollins@isosure.me;janie.donaldson@interloo.biz;rosanna.gonzales@turnabout.co.uk;patterson.compton@franscene.ca;deirdre.parrish@mantrix.biz'
+
+    makeEmailHref(demoModel).should.eql(expectedResult)
+  })
+
+  // R.lift: basically, everything passed in each array becomes a possible value for a (and then b, and then c)
+  let allPossibleSums = R.lift((a, b, c) => a + b + c)
+
+  it.only('all possible sums', () => {
+    let result = allPossibleSums(
+      [1, 2],
+      [4, 5],
+      [7, 8]
+    ) 
+
+    result.should.eql([12, 13, 13, 14, 13, 14, 14, 15])
+  })
+
+
 
 })
 
