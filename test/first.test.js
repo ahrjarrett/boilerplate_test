@@ -40,8 +40,8 @@ describe("testing R.curry", () => {
   })
 
   it("func pipelines", () => {
-    let f = (x) => x + 1 
-    let g = (x) => x * 5
+    const f = (x) => x + 1 
+    const g = (x) => x * 5
 
     f(g(1)).should.eql(6)
     g(f(1)).should.eql(10)
@@ -52,23 +52,49 @@ describe("testing R.curry", () => {
     R.pipe(f, g)(1).should.eql(10)
     R.pipe(g, f)(1).should.eql(6)
 
-    let isEven = (x) => x %2 === 0
-    let multiplyEvens = R.pipe(
+    const isEven = (x) => x %2 === 0
+    const multiplyEvens = R.pipe(
       R.filter(isEven),
       R.reduce(R.multiply, 1)
     )
     
     multiplyEvens(R.range(1, 7)).should.eql(48)
 
-
   })
 })
 
 describe("working with objects", () => {
+  const isActive = R.propEq('isActive', true)
+  const overThirty = R.pipe(
+    R.prop('age'),
+    (age) => age > 30
+  )
+
+  const activeOverThirty = R.pipe(
+    R.filter(R.both(isActive, overThirty)),
+    R.map(R.path(['name', 'first']))
+  )
+
   it("first names of isActive=true and age > 30", () => {
-    
-
-
+    activeOverThirty(demoModel).should.eql(['Patterson'])
   })
+
+  let excludedTags = ['proident']
+
+  let isExcludedTag = (tag) => R.any(R.equals(tag), excludedTags)
+
+  let filterExcludedTags = R.reject(
+    R.pipe(
+      R.prop('tags'),
+      //R.tap(console.log),
+      R.any(isExcludedTag)
+    )
+  )
+
+  it('rejects those with excluded tag', () => {
+    filterExcludedTags(demoModel).length.should.eql(2) 
+  })
+
+
 })
 
