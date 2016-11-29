@@ -61,9 +61,11 @@ describe("square code challenge", () => {
     checkColumns(inputs).should.eql([8, 4, 4, 4])
   })
 
-  let turnIntoSquare = R.always(R.identity)
+  // originally turnIntoSquare was R.always(R.identity), because R.always returns a function that returns the given value
+  // so, in this case, passing 4 to turnIntoSquare does nothing bc calling R.always(R.identity)() does not take any params
+  let turnIntoSquare = (columns) => R.splitEvery(columns)
 
-  it.only("turn input into square", () => {
+  it("turn input into square", () => {
     let input = 'haveaniceday'
     turnIntoSquare(4)(input).should.eql([
       'have',
@@ -72,7 +74,24 @@ describe("square code challenge", () => {
     ])
   })
 
-  let fillSquare = R.always(R.identity)
+  // as above, fillSquare was initialized to R.always(R.identity)
+  // this one gets complicated; probably worth renaming some of the piped functions within fillSpaces()
+  let fillSquare = (columns) => R.map(
+    R.ifElse(
+      R.pipe(R.length, R.equals(columns)),
+      R.identity,
+      (row) => {
+        let fillSpaces = R.pipe(
+          R.length,
+          R.subtract(columns),
+          R.times(R.always(' ')),
+          R.join(''),
+          R.concat(row)
+        )
+        return fillSpaces(row)
+      }
+    )
+  )
 
   it("fill in spaces for any uneven rows", () => {
     let squareWithUnevenRows = [
@@ -89,7 +108,7 @@ describe("square code challenge", () => {
 
   let transposeSquare = R.identity
 
-  it("transpose a square", () => {
+  it.only("transpose a square", () => {
     let square = [
       'have',
       'anic',
