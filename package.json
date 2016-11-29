@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "babel": "^5.8.21",
-    "dummy-json": "^1.0.1",
+    "dummy-json": "https://registry.npmjs.org/dummy-json/-/dummy-json-1.0.1.tgz",
     "lodash": "^4.16.6",
     "mocha": "^3.1.2",
     "ramda": "^0.22.1",

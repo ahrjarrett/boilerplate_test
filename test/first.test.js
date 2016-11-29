@@ -1,6 +1,9 @@
 const R = require('ramda')
 const _ = require('lodash')
+
 const testData = require('../data/data.json')
+const dataGenerator = require('../dataGenerator')
+const userModel = dataGenerator('userModel')
 
 describe("fail test", () => {
   it("will fail", () => {
@@ -24,6 +27,7 @@ describe("ramda filter", () => {
   it("should filter array to odd numbers", () => {
     const isOdd = (n) => n % 2 === 1
     R.filter(isOdd, [1,2,3,4,5,6,7]).should.eql([1,3,5,7])
+    console.log(userModel)
   })
 })
 

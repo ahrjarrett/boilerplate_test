@@ -351,7 +351,7 @@
     },
     "dummy-json": {
       "version": "1.0.1",
-      "from": "dummy-json@latest",
+      "from": "https://registry.npmjs.org/dummy-json/-/dummy-json-1.0.1.tgz",
       "resolved": "https://registry.npmjs.org/dummy-json/-/dummy-json-1.0.1.tgz"
     },
     "escape-string-regexp": {

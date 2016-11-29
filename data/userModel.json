@@ -1,0 +1,94 @@
+{
+  "users": [
+    {
+      "id": 0,
+      "name": "Adam Starck"
+      "address": {
+        "street": "47 Hudson Street",
+        "city": "Walkerville",
+        "country": "Lao People&#x27;s Democratic Republic"
+      }
+    },
+    {
+      "id": 1,
+      "name": "Cory Bradbury"
+      "address": {
+        "street": "50 Maple Street",
+        "city": "Hillboro",
+        "country": "Iran, Islamic Republic of"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Leanne Bryd"
+      "address": {
+        "street": "48 Fairmont Avenue",
+        "city": "Nottingham",
+        "country": "Finland"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Ian Woodrum"
+      "address": {
+        "street": "56 Rivington Street",
+        "city": "London",
+        "country": "Saint Vincent and the Grenadines"
+      }
+    },
+    {
+      "id": 4,
+      "name": "Cory Hundt"
+      "address": {
+        "street": "69 Elton Way",
+        "city": "Spokane",
+        "country": "Bosnia and Herzegovina"
+      }
+    },
+    {
+      "id": 5,
+      "name": "Michael Smit"
+      "address": {
+        "street": "23 Willow Avenue",
+        "city": "Boston",
+        "country": "Poland"
+      }
+    },
+    {
+      "id": 6,
+      "name": "Craig Schaefer"
+      "address": {
+        "street": "77 Waverton Street",
+        "city": "Youngstown",
+        "country": "Japan"
+      }
+    },
+    {
+      "id": 7,
+      "name": "Curtis Tindel"
+      "address": {
+        "street": "48 Seaside Drive",
+        "city": "Adelaide",
+        "country": "Timor-Leste"
+      }
+    },
+    {
+      "id": 8,
+      "name": "Grace Pettey"
+      "address": {
+        "street": "26 Highland Drive",
+        "city": "Walkerville",
+        "country": "Kiribati"
+      }
+    },
+    {
+      "id": 9,
+      "name": "Chloe Lenihan"
+      "address": {
+        "street": "89 Park Avenue",
+        "city": "Toronto",
+        "country": "Nicaragua"
+      }
+    }
+  ]
+}
