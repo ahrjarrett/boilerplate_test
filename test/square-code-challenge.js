@@ -1,4 +1,4 @@
-var R = require('ramda')
+let R = require('ramda')
 
 //http://users.csc.calpoly.edu/~jdalbey/103/Projects/ProgrammingPractice.html
 //One classic method for composing secret messages is called a square code.
@@ -19,21 +19,24 @@ var R = require('ramda')
 
 //imtgdvs fearwer mayoogo anouuio ntnnlvt wttddes aohghn sseoau
 describe("square code challenge", () => {
-  var inputs = [
+  let inputs = [
     'If man was meant to stay on the ground, God would have given us roots.',
     'Have a nice day!',
     'Feed the dog.',
     'CHILL OUT!!!'
   ]
 
-  var outputs = [
+  let outputs = [
     'imtgdvs fearwer mayoogo anouuio ntnnlvt wttddes aohghn sseoau',
     'hae and via ecy',
     'fto ehg ee dd',
     'cl ho iu lt'
   ]
 
-  var cleanInput = R.identity
+  let cleanInput = R.pipe(
+    R.toLower,
+    R.replace(/[^a-z]/g, '')
+  )
 
   it("clean input", () => {
     cleanInput('HELLO!!  ...,,').should.eql('hello')
@@ -42,17 +45,26 @@ describe("square code challenge", () => {
   //Hint:
   //rows = floor of square root of length
   //columns = ceiling of length / rows
-  var determineNumberOfColumns = R.identity
+  let determineNumberOfColumns = (input) => {
+    let length = input.length
+    let columnsFor = R.pipe(
+      Math.sqrt,
+      Math.floor,
+      R.divide(length),
+      Math.ceil
+    )
+    return columnsFor(length)
+  }
 
   it("determine number of columns", () => {
-    var checkColumns = R.map(R.pipe(cleanInput, determineNumberOfColumns))
+    let checkColumns = R.map(R.pipe(cleanInput, determineNumberOfColumns))
     checkColumns(inputs).should.eql([8, 4, 4, 4])
   })
 
-  var turnIntoSquare = R.always(R.identity)
+  let turnIntoSquare = R.always(R.identity)
 
-  it("turn input into square", () => {
-    var input = 'haveaniceday'
+  it.only("turn input into square", () => {
+    let input = 'haveaniceday'
     turnIntoSquare(4)(input).should.eql([
       'have',
       'anic',
@@ -60,10 +72,10 @@ describe("square code challenge", () => {
     ])
   })
 
-  var fillSquare = R.always(R.identity)
+  let fillSquare = R.always(R.identity)
 
   it("fill in spaces for any uneven rows", () => {
-    var squareWithUnevenRows = [
+    let squareWithUnevenRows = [
       'feed',
       'thed',
       'og'
@@ -75,10 +87,10 @@ describe("square code challenge", () => {
     ])
   })
 
-  var transposeSquare = R.identity
+  let transposeSquare = R.identity
 
   it("transpose a square", () => {
-    var square = [
+    let square = [
       'have',
       'anic',
       'eday'
@@ -94,7 +106,7 @@ describe("square code challenge", () => {
 
 
   it("tranpose an uneven rows square", () => {
-    var square = [
+    let square = [
       'feed',
       'thed',
       'og'
@@ -108,13 +120,13 @@ describe("square code challenge", () => {
     ])
   })
 
-  var encode = R.identity
+  let encode = R.identity
 
   it("encode inputs", () => {
     R.map(encode, inputs).should.eql(outputs)
   })
 
-  var decode = R.identity
+  let decode = R.identity
 
   it("decode outputs", () => {
     R.map(decode, outputs).should.eql([
