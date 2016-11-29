@@ -23,7 +23,7 @@ const generateData = (name) => {
   let format = '.json'
   let fileName = name
   let data = dir + fileName + format
-  fs.writeFile(data, result, (err) => {
+  fs.writeFileSync(data, result, (err) => {
     if (err) throw err
     console.log('dummy json file written: ', data)
   })
