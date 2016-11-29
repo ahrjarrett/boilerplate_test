@@ -1,10 +1,5 @@
 const R = require('ramda')
 const _ = require('lodash')
-
-//const dataGenerator = require('../dataGenerator')
-//const generateData = dataGenerator('userModel')
-//const userModel = require('userModel.json')
-
 const demoModel = require('../data/demo.json')
 
 describe("fail test", () => {
@@ -57,9 +52,8 @@ describe("testing R.curry", () => {
       R.filter(isEven),
       R.reduce(R.multiply, 1)
     )
-    
-    multiplyEvens(R.range(1, 7)).should.eql(48)
 
+    multiplyEvens(R.range(1, 7)).should.eql(48)
   })
 })
 
@@ -110,17 +104,13 @@ describe("working with objects", () => {
   // R.lift: basically, everything passed in each array becomes a possible value for a (and then b, and then c)
   let allPossibleSums = R.lift((a, b, c) => a + b + c)
 
-  it.only('all possible sums', () => {
+  it('all possible sums', () => {
     let result = allPossibleSums(
       [1, 2],
       [4, 5],
       [7, 8]
     ) 
-
     result.should.eql([12, 13, 13, 14, 13, 14, 14, 15])
   })
-
-
-
 })
 
