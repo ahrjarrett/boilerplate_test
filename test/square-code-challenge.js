@@ -106,9 +106,7 @@ describe("square code challenge", () => {
     ])
   })
 
-  let transposeSquare = R.identity
-
-  it.only("transpose a square", () => {
+  it("transpose a square", () => {
     let square = [
       'have',
       'anic',
