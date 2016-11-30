@@ -19,21 +19,21 @@ import R from 'ramda'
 
 //imtgdvs fearwer mayoogo anouuio ntnnlvt wttddes aohghn sseoau
 describe("square code challenge", () => {
-  let inputs = [
+  const inputs = [
     'If man was meant to stay on the ground, God would have given us roots.',
     'Have a nice day!',
     'Feed the dog.',
     'CHILL OUT!!!'
   ]
 
-  let outputs = [
+  const outputs = [
     'imtgdvs fearwer mayoogo anouuio ntnnlvt wttddes aohghn sseoau',
     'hae and via ecy',
     'fto ehg ee dd',
     'cl ho iu lt'
   ]
 
-  let cleanInput = R.pipe(
+  const cleanInput = R.pipe(
     R.toLower,
     R.replace(/[^a-z]/g, '')
   )
@@ -45,9 +45,9 @@ describe("square code challenge", () => {
   //Hint:
   //rows = floor of square root of length
   //columns = ceiling of length / rows
-  let determineNumberOfColumns = (input) => {
-    let length = input.length
-    let columnsFor = R.pipe(
+  const determineNumberOfColumns = (input) => {
+    const length = input.length
+    const columnsFor = R.pipe(
       Math.sqrt,
       Math.floor,
       R.divide(length),
@@ -57,16 +57,16 @@ describe("square code challenge", () => {
   }
 
   it("determine number of columns", () => {
-    let checkColumns = R.map(R.pipe(cleanInput, determineNumberOfColumns))
+    const checkColumns = R.map(R.pipe(cleanInput, determineNumberOfColumns))
     checkColumns(inputs).should.eql([8, 4, 4, 4])
   })
 
   // originally turnIntoSquare was R.always(R.identity), because R.always returns a function that returns the given value
   // so, in this case, passing 4 to turnIntoSquare does nothing bc calling R.always(R.identity)() does not take any params
-  let turnIntoSquare = (columns) => R.splitEvery(columns)
+  const turnIntoSquare = (columns) => R.splitEvery(columns)
 
   it("turn input into square", () => {
-    let input = 'haveaniceday'
+    const input = 'haveaniceday'
     turnIntoSquare(4)(input).should.eql([
       'have',
       'anic',
@@ -76,12 +76,12 @@ describe("square code challenge", () => {
 
   // as above, fillSquare was initialized to R.always(R.identity)
   // this one gets complicated; probably worth renaming some of the piped functions within fillSpaces()
-  let fillSquare = (columns) => R.map(
+  const fillSquare = (columns) => R.map(
     R.ifElse(
       R.pipe(R.length, R.equals(columns)),
       R.identity,
       (row) => {
-        let fillSpaces = R.pipe(
+        const fillSpaces = R.pipe(
           R.length,
           R.subtract(columns),
           R.times(R.always(' ')),
@@ -94,7 +94,7 @@ describe("square code challenge", () => {
   )
 
   it("fill in spaces for any uneven rows", () => {
-    let squareWithUnevenRows = [
+    const squareWithUnevenRows = [
       'feed',
       'thed',
       'og'
@@ -107,7 +107,7 @@ describe("square code challenge", () => {
   })
 
   it("transpose a square", () => {
-    let square = [
+    const square = [
       'have',
       'anic',
       'eday'
@@ -123,7 +123,7 @@ describe("square code challenge", () => {
 
 
   it("tranpose an uneven rows square", () => {
-    let square = [
+    const square = [
       'feed',
       'thed',
       'og'
@@ -137,13 +137,13 @@ describe("square code challenge", () => {
     ])
   })
 
-  let encode = R.identity
+  const encode = R.identity
 
   it("encode inputs", () => {
     R.map(encode, inputs).should.eql(outputs)
   })
 
-  let decode = R.identity
+  const decode = R.identity
 
   it("decode outputs", () => {
     R.map(decode, outputs).should.eql([

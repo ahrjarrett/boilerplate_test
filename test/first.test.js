@@ -1,17 +1,9 @@
 import R from 'ramda'
-//import _ from 'lodash'
 import mockData from '../data/mockData_1.js'
-
 
 describe("fail test", () => {
   it("will fail", () => {
     true.should.eql(true)
-  })
-})
-
-describe("_.isString", () => {
-  it("value is a string", () => {
-    _.isString('string').should.eql(true)
   })
 })
 

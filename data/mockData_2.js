@@ -1,4 +1,4 @@
-export const data = {
+export const problem = {
   'group1-perm1': true,
   'group1-perm2': false,
   'group2-perm1': false,
@@ -7,7 +7,7 @@ export const data = {
   'perm4': false
 }
 
-export const goal = {
+export const solution = {
   group1: [
     { value: 'group1-perm1', checked: true, 'label': 'perm1'},
     { value: 'group1-perm2', checked: false, 'label': 'perm2'} ],

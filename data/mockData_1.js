@@ -1,4 +1,4 @@
-[
+module.exports = [
   {
     "isActive": false,
     "balance": "$2,006.43",

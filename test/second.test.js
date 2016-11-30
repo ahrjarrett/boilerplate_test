@@ -1,6 +1,5 @@
 import R from 'ramda'
-import { data, goal } from '../data/mockData_2.js'
-
+import { problem, solution } from '../data/mockData_2.js'
 
 describe("test test", () => {
   it("test should pass", () => {
@@ -25,14 +24,14 @@ describe("data should match goal", () => {
       () => 'general'
     )
 
-    const massageData = R.pipe(
+    const answer = R.pipe(
       R.toPairs,
       R.map(convert),
       R.groupBy(groupName),
       R.tap(console.log)
     )
 
-    massageData(data).should.eql(goal)
+    answer(problem).should.eql(solution)
 
   })
 })
