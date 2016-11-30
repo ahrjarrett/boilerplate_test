@@ -8,6 +8,11 @@ Array.prototype.concatMap = function(projectionFunctionThatReturnsArray) {
     .concatAll()
 }
 
+/* BUG: this test fails because we redefined reduce in eight.test.js
+ * so that it returns an array, instead of the value (which totally
+ * defeats the purpose of the flatten function)
+ */
+
 // flatten :: [[Arr]] -> Arr
 const flatten = (arr) => arr.reduce(function(a, b){
   return a.concat(b)
