@@ -14,7 +14,7 @@ const flatten = (arr) => arr.reduce(function(a, b){
 }, [])
 
 describe("concatMap maps and concats: ", () => {
-  it.only("2D input should be flat", () => {
+  it("2D input should be flat", () => {
     problem.concatMap(flatten).should.eql(solution)
   })
 })
