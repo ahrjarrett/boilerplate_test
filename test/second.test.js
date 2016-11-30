@@ -9,7 +9,7 @@ describe("test test", () => {
 })
 
 describe("data should match goal", () => {
-  it.only("sensual data massage is sensual", () => {
+  it("sensual data massage is sensual", () => {
 
     const GROUP_LEN = 6
     const KEYS = ['value', 'checked', 'label']
