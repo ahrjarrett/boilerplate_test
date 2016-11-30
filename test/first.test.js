@@ -1,6 +1,7 @@
-const R = require('ramda')
-const _ = require('lodash')
-const demoModel = require('../data/demo.json')
+import R from 'ramda'
+//import _ from 'lodash'
+import mockData from '../data/mockData_1.js'
+
 
 describe("fail test", () => {
   it("will fail", () => {
@@ -16,7 +17,7 @@ describe("_.isString", () => {
 
 describe("ramda identity", () => {
   it("identity should return true", () => {
-    R.identity(demoModel).should.eql(demoModel)
+    R.identity(mockData).should.eql(mockData)
   })
 })
 
@@ -35,7 +36,7 @@ describe("testing R.curry", () => {
   })
 
   it("func pipelines", () => {
-    const f = (x) => x + 1 
+    const f = (x) => x + 1
     const g = (x) => x * 5
 
     f(g(1)).should.eql(6)
@@ -70,7 +71,7 @@ describe("working with objects", () => {
   )
 
   it("first names of isActive=true and age > 30", () => {
-    activeOverThirty(demoModel).should.eql(['Patterson'])
+    activeOverThirty(mockData).should.eql(['Patterson'])
   })
 
   let excludedTags = ['proident']
@@ -86,7 +87,7 @@ describe("working with objects", () => {
   )
 
   it('rejects those with excluded tag', () => {
-    filterExcludedTags(demoModel).length.should.eql(2) 
+    filterExcludedTags(mockData).length.should.eql(2)
   })
 
   let makeEmailHref = R.pipe(
@@ -98,7 +99,7 @@ describe("working with objects", () => {
   it('sends an email to everybody', () => {
     let expectedResult = 'mailto:marcie.rollins@isosure.me;janie.donaldson@interloo.biz;rosanna.gonzales@turnabout.co.uk;patterson.compton@franscene.ca;deirdre.parrish@mantrix.biz'
 
-    makeEmailHref(demoModel).should.eql(expectedResult)
+    makeEmailHref(mockData).should.eql(expectedResult)
   })
 
   // R.lift: basically, everything passed in each array becomes a possible value for a (and then b, and then c)
@@ -109,7 +110,7 @@ describe("working with objects", () => {
       [1, 2],
       [4, 5],
       [7, 8]
-    ) 
+    )
     result.should.eql([12, 13, 13, 14, 13, 14, 14, 15])
   })
 })

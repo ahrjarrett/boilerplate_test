@@ -1,6 +1,6 @@
-const R = require('ramda')
-//const mockData = require('../data/mockData.js')
-import { data, goal } from '../data/mockData'
+import R from 'ramda'
+import { data, goal } from '../data/mockData_2.js'
+
 
 describe("test test", () => {
   it("test should pass", () => {
@@ -9,7 +9,7 @@ describe("test test", () => {
 })
 
 describe("data should match goal", () => {
-  it("sensual data massage is sensual", () => {
+  it.only("sensual data massage is sensual", () => {
 
     const GROUP_LEN = 6
     const KEYS = ['value', 'checked', 'label']
