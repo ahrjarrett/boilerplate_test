@@ -14,9 +14,10 @@ describe("data should match goal", () => {
     const GROUP_LEN = 6
     const inGroup = str => str.indexOf('-') === GROUP_LEN
 
-    // addLabel :: Array -> Array
+    const getLabel = R.pipe(R.splitAt(GROUP_LEN + 1), R.last)
+
     const addLabel = R.chain(R.compose(
-      R.ifElse(inGroup, () => 'x', R.identity),
+      R.ifElse(inGroup, getLabel, R.identity),
       R.head), R.append
     )
 

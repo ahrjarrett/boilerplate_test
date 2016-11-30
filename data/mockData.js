@@ -1,8 +1,8 @@
 export const data = {
-  'group-perm1': true,
-  'group-perm2': false,
-  'group-perm3': false,
-  'group-perm4': true,
+  'group1-perm1': true,
+  'group1-perm2': false,
+  'group2-perm1': false,
+  'group2-perm2': true,
   'perm3': true,
   'perm4': false
 }
