@@ -1,4 +1,4 @@
-let R = require('ramda')
+import R from 'ramda'
 
 //http://users.csc.calpoly.edu/~jdalbey/103/Projects/ProgrammingPractice.html
 //One classic method for composing secret messages is called a square code.
