@@ -27,7 +27,7 @@ function movieTest() {
 }
 
 describe("vanilla JS: ", () => {
-  it.only('fails', () => {
+  it('fails', () => {
     movieTest().sort().should.eql(solution.sort())
   })
 })
