@@ -18,7 +18,7 @@ import R from 'ramda'
 //For example, the message above is coded as:
 
 //imtgdvs fearwer mayoogo anouuio ntnnlvt wttddes aohghn sseoau
-describe.only("square code challenge", () => {
+describe("square code challenge", () => {
   const inputs = [
     'If man was meant to stay on the ground, God would have given us roots.',
     'Have a nice day!',
@@ -106,19 +106,23 @@ describe.only("square code challenge", () => {
     ])
   })
 
-//  const transposeSquare = R.converge(
-//    R.reduce((acc, row) => {
-//      return acc
-//    }),
-//    R.pipe(R.head, R.map(R.of)),
-//    R.tail
-//
-//  )
 
+  // this one was a bitch. breaking changes in
+  // R.converge from 0.17 to 0.22 meant having
+  // to wrap 2nd arg in an array -_-;;
+  const transposeSquare = R.converge(
+    R.reduce((acc, row) => {
+      const zipWithAcc = R.pipe(
+        R.zip(acc),
+        R.map(R.pipe(R.flatten, R.join('')))
+      )
+      return zipWithAcc(row)
+    }), [
+      R.pipe(R.head, R.map(R.of)),
+      R.tail
+  ])
 
   it("transpose a square", () => {
-
-    var transposeSquare = R.identity
 
     let square = [
       'have',
@@ -135,7 +139,7 @@ describe.only("square code challenge", () => {
   })
 
 
-  it("tranpose an uneven rows square", () => {
+  it.only("tranpose an uneven rows square", () => {
     const square = [
       'feed',
       'thed',
