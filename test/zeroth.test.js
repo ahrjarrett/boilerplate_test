@@ -107,14 +107,16 @@ describe("square code challenge", () => {
   })
 
 
-  // this one was a bitch. breaking changes in
-  // R.converge from 0.17 to 0.22 meant having
-  // to wrap 2nd arg in an array -_-;;
+  /* this one was a bitch. breaking changes in
+   * R.converge from 0.17 to 0.22 meant having
+   * to wrap 2nd arg in an array -_-;;
+   */
+  const flattenAndTrim = R.pipe(R.flatten, R.join(''), R.trim)
   const transposeSquare = R.converge(
     R.reduce((acc, row) => {
       const zipWithAcc = R.pipe(
         R.zip(acc),
-        R.map(R.pipe(R.flatten, R.join('')))
+        R.map(flattenAndTrim)
       )
       return zipWithAcc(row)
     }), [
@@ -123,7 +125,6 @@ describe("square code challenge", () => {
   ])
 
   it("transpose a square", () => {
-
     let square = [
       'have',
       'anic',
@@ -138,8 +139,8 @@ describe("square code challenge", () => {
     ])
   })
 
-
-  it.only("tranpose an uneven rows square", () => {
+  // this one was solved by adding trim to flattenAndTrim, above
+  it("tranpose an uneven rows square", () => {
     const square = [
       'feed',
       'thed',
@@ -154,15 +155,44 @@ describe("square code challenge", () => {
     ])
   })
 
-  const encode = R.identity
+  // now pipe all the methods we made to solve:
+  const encode = (input) => {
+    var cleanedInput = cleanInput(input)
+    var columns = determineNumberOfColumns(cleanedInput)
+    var encodeInput = R.pipe(
+      turnIntoSquare(columns),
+      fillSquare(columns),
+      transposeSquare,
+      R.join(' ')
+    )
+    return encodeInput(cleanedInput)
+  }
 
   it("encode inputs", () => {
     R.map(encode, inputs).should.eql(outputs)
   })
 
-  const decode = R.identity
+  const decode = (output) => {
+    var decodeOutput = R.pipe(
+      R.split(' '),
+      R.converge(
+        R.call, [
+          R.pipe(R.head, R.length, fillSquare),
+          R.identity
+        ]
+      ),
+      // OLD, LESS CRAZY SOLUTION:
+      //(row) => {
+      //  var length = row[0].length
+      //  return fillSquare(length)(row)
+      //},
+      transposeSquare,
+      R.join(' ')
+    )
+    return decodeOutput(output)
+  }
 
-  it("decode outputs", () => {
+  it.only("decode outputs", () => {
     R.map(decode, outputs).should.eql([
       'ifmanwas meanttos tayonthe groundgo dwouldha vegivenu sroots',
       'have anic eday',
