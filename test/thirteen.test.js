@@ -15,7 +15,7 @@ function checkAnswer() {
 }
 
 describe("test #13: ", () => {
-  it.only("uses map & filter to join 2 arrays w/ a key", () => {
+  it("uses map & filter to join 2 arrays w/ a key", () => {
     checkAnswer().should.eql(solution)
   })
 })
