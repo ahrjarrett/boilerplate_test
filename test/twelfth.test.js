@@ -38,7 +38,7 @@ function checkAnswer() {
 }
 
 describe("#12 is difficult", () => {
-  it.only("should be zipped, reduced, etc.", () => {
+  it("should be zipped, reduced, etc.", () => {
     checkAnswer().should.eql(solution)
   })
 })
