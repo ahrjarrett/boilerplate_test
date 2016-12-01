@@ -8,8 +8,8 @@ const answer = R.pipe(
   R.mergeAll
 )
 
-describe("third test", () => {
-  it("", () => {
+describe("Exploring Ramda pt 2", () => {
+  it("returns a similar solution that is less verbose", () => {
     answer(problem).should.eql(solution)
   })
 })

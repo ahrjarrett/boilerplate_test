@@ -1,21 +1,9 @@
-/*
- * FUN TO SOLVE!
- * Unfortunately, for some reason mocha won't let me pass:
- * `TypeError: Cannot read property 'concatMap' of undefined`
- */
+// FUN TO SOLVE!
 
 import { problem, solution } from '../data/mockData_12'
 
-Array.prototype.concatMap = function(projectionFunctionThatReturnsArray) {
-  return this
-    .map(function(item) {
-      return projectionFunctionThatReturnsArray(item)
-    })
-    .concatAll()
-}
-
 function checkAnswer() {
-  let movieLists = solution
+  let movieLists = problem
 
   return movieLists.concatMap(function(movieList) {
     return movieList.videos.concatMap(function(video) {
@@ -37,10 +25,9 @@ function checkAnswer() {
   })
 }
 
-describe("#12 is difficult", () => {
-  it("should be zipped, reduced, etc.", () => {
+describe("compose zip, filter & reduce", () => {
+  it("filters one array and reduces another during zip up", () => {
     checkAnswer().should.eql(solution)
   })
 })
-
 

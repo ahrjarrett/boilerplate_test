@@ -12,24 +12,11 @@ Array.zip = function(l, r, fn){
 }
 
 describe('11: wrote a naive zip fn that:', () => {
-  const left = [1,4,5], right = [1,7,5]
+  const left = [1, 5, 7], right = [1, 6, 3]
   const addLeftToRight = (l, r) => l + r
-
-  const keys = ['x', 'y', 'z'], values = ['examine', 'your', 'zipper']
-  const zipStrings = (l, r) => {
-
-    return
-
-  }
 
   it('should zip her up', () => {
     Array.zip(left, right, addLeftToRight).should.eql([2, 11, 10])
   })
-
-  //it('should zip up the pants', () => {
-  //  Array.zip(keys, values, zipStrings).should.eql([
-  //    {'x':'examine'},{'y':'your'},{'z':'zipper'}
-  //  ])
-  //})
 
 })

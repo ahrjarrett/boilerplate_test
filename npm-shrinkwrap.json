@@ -1481,7 +1481,7 @@
     },
     "ramda": {
       "version": "0.22.1",
-      "from": "ramda@latest",
+      "from": "https://registry.npmjs.org/ramda/-/ramda-0.22.1.tgz",
       "resolved": "https://registry.npmjs.org/ramda/-/ramda-0.22.1.tgz"
     },
     "randomatic": {

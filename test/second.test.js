@@ -1,14 +1,14 @@
 import R from 'ramda'
 import { problem, solution } from '../data/mockData_2.js'
 
-describe("test test", () => {
-  it("test should pass", () => {
+describe("T", () => {
+  it("always returns true", () => {
     true.should.eql(true)
   })
 })
 
-describe("data should match goal", () => {
-  it("sensual data massage is sensual", () => {
+describe("Exploring Ramda", () => {
+  it("flattens and zips and object", () => {
 
     const GROUP_LEN = 6
     const KEYS = ['value', 'checked', 'label']
@@ -27,8 +27,7 @@ describe("data should match goal", () => {
     const answer = R.pipe(
       R.toPairs,
       R.map(convert),
-      R.groupBy(groupName),
-      R.tap(console.log)
+      R.groupBy(groupName)
     )
 
     answer(problem).should.eql(solution)

@@ -37,8 +37,7 @@ function checkAnswer() {
 }
 
 describe("test #14: ", () => {
-  it.only("Converting from Arrays to Deeper Trees", () => {
-    console.log(checkAnswer())
+  it("Converting from Arrays to Deeper Trees", () => {
     checkAnswer().should.eql(solution)
   })
 })
