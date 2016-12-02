@@ -192,7 +192,7 @@ describe("square code challenge", () => {
     return decodeOutput(output)
   }
 
-  it.only("decode outputs", () => {
+  it("decode outputs", () => {
     R.map(decode, outputs).should.eql([
       'ifmanwas meanttos tayonthe groundgo dwouldha vegivenu sroots',
       'have anic eday',

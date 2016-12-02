@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "tdd": "mocha -w"
+    "tdd": "mocha -w -R spec"
   },
   "author": "andrew jarrett",
   "license": "ISC",
