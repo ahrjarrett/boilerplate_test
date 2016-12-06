@@ -22,7 +22,7 @@ const reducer = (tally, vote) => {
 const result = votes.reduce(reducer, initialVal)
 
 describe("reducer should create array of reduced vals", () => {
-  it.only("should return reduced obj", () => {
+  it("should return reduced obj", () => {
     console.log(result)
     result[0].angular.should.eql(3)
   })
